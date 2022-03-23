@@ -42,6 +42,7 @@ def mmult(N, A, B, C):
 
 
 def madd(N, A, B, C):
+    # print(A, B ,N)
     for i in range(N):
         for j in range(N):
             C[i][j] = A[i][j] + B[i][j]
@@ -74,23 +75,32 @@ def strassen(N, A, B, C):
         mmult(N, A, B, C)
     else:
         m = N//2
-        A11 = list(); A12 = list(); A21 = list(); A22 = list(); B11 = list(); B12 = list(); B21 = list(); B22 = list(); C11 = list(); C12 = list(); C21 = list(); C22 = list()
-        M1 = list(); M2 = list(); M3 = list(); M4 = list(); M5 = list(); M6 = list(); M7 = list()
-        L = list(); R = list()
-        resize(m, A11); resize(m, A12); resize(m, A21); resize(m, A22)
-        resize(m, B11); resize(m, B12); resize(m, B21); resize(m, B22)
-        resize(m, C11); resize(m, C12); resize(m, C21); resize(m, C22)
-        resize(m, M1); resize(m, M2); resize(m, M3); resize(m, M4); resize(m, M5); resize(m, M6); resize(m, M7)
-        resize(m, L); resize(m, R)
 
-        partition(m, A, A11, A12, A21, A22)
-        partition(m, B, B11, B12, B21, B22)
+        main_dict = {f'{c}{i}{j}': [] for c in ['A', 'B', 'C'] for i in range(1, 3) for j in range(1, 3)}
+        main_dict.update({f'M{i}': [] for i in range(1, 8)})
+        main_dict.update({f'{c}': [] for c in ['L', 'R']})
+
+        for key in list(main_dict.keys()):
+            resize(m, main_dict[key])
+
+        # print(main_dict)
+
+        partition(m, A, *[main_dict[f'{c}'] for c in list(main_dict.keys()) if 'A' in c])
+        partition(m, B, *[main_dict[f'{c}'] for c in list(main_dict.keys()) if 'B' in c])
+
+        # print(A21, A22, m)
+
+        A11, A12, A21, A22 = [main_dict[f'{c}'] for c in list(main_dict.keys()) if 'A' in c]
+        B11, B12, B21, B22 = [main_dict[f'{c}'] for c in list(main_dict.keys()) if 'B' in c]
+        C11, C12 ,C21, C22 = [main_dict[f'{c}'] for c in list(main_dict.keys()) if 'C' in c]
+        M1, M2, M3, M4, M5, M6, M7 = [main_dict[f'{c}'] for c in list(main_dict.keys()) if 'M' in c]
+        L, R = main_dict['L'], main_dict['R']
 
         madd(m, A11, A22, L)
         madd(m, B11, B22, R)
         strassen(m, L, R, M1)       ###M1
 
-        madd(m, A21, A22, L)
+        madd(m, main_dict['A21'], main_dict['A22'], L)
         strassen(m, L, B11, M2)     ###M2
 
         msub(m, B12, B22, R)
