@@ -104,4 +104,10 @@ globals()['count'] = 0      # 글로벌 변수 count 선언
 C = prod(A, B)
 remove_zero(C)
 print(globals()['count'])
-print(list_to_int(C) if len(C) else 0)
+
+# print(list_to_int(C) if len(C) else 0)
+
+# if len(C):
+#     print(*list(reversed(C)), sep='')
+# else:
+#     print(0)
