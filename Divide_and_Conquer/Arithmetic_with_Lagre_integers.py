@@ -1,3 +1,5 @@
+import sys
+input = sys.stdin.readline
 threshold = int(input())        # 임곗값 입력
 
 A = list(map(int, reversed(input().strip())))       # input받은 것을 화이트 스페이스를 제외하고 역순 처리
