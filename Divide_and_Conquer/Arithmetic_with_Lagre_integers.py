@@ -1,9 +1,7 @@
-import sys
-input = sys.stdin.readline
 threshold = int(input())        # 임곗값 입력
 
-A = list(map(int, reversed(input()[:-1])))     # input받은 것을 '\n'을 제외하고 역순 처리
-B = list(map(int, reversed(input()[:-1])))     # input받은 것을 '\n'을 제외하고 역순 처리
+A = list(map(int, reversed(input().strip())))       # input받은 것을 화이트 스페이스를 제외하고 역순 처리
+B = list(map(int, reversed(input().strip())))       # input받은 것을 화이트 스페이스를 제외하고 역순 처리
 
 
 def list_to_int(A):
@@ -106,7 +104,4 @@ remove_zero(C)
 
 print(globals()['count'])
 
-# for i in range(len(C) - 1, -1, -1):
-#     print(C[i],end='')
-# print()
 print(list_to_int(C) if len(C) else 0)
