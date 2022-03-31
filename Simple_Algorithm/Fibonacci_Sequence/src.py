@@ -29,5 +29,5 @@ start2 = time.time()
 print(fib2(n))
 end2 = time.time()
 
-print(end - star/t)
+print(end - start)
 print(end2 - start2)
