@@ -17,7 +17,7 @@ def func(n):
                 r[i][j] = [1, d[i][j]]
                 d[i][j] += d[i-1][j-1]
             else:
-                if d[i-1][j-1] <= d[i-1][j]:
+                if d[i-1][j-1] <= d[i-1][j]:        # 이 부분 주의해야함 < 아님 <= 해야함. 그래야 
                     r[i][j] = [0, d[i][j]]
                     d[i][j] += d[i-1][j]
                 else:
