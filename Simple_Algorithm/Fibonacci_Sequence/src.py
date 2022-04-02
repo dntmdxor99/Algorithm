@@ -1,33 +1,47 @@
 import time
 
-def fib(n):
+n = int(input())    
+
+
+def fib1(n):
     if n <= 1:
         return n
     else:
-        return fib(n-1) + fib(n-2)
+        return fib1(n-1) + fib1(n-2)
 
 
 def fib2(n):
-    lst = list()
     if n <= 1:
         return n
     else:
-        lst.append(0)
-        lst.append(1)
+        data = []
+        data.append(0)
+        data.append(1)
         for i in range(2, n+1):
-            lst.append(lst[i-1] + lst[i-2])
-        return lst[n]
+            data.append(data[i-1] + data[i-2])
+        return data[n]
 
 
-n = int(input())
+def fib3(n):
+    if n <= 1:
+        return n
+    else:
+        temp1 = 0
+        temp2 = 1
+        for i in range(2, n+1):
+            data = temp1 + temp2
+            temp1 = temp2
+            temp2 = data
+        return data
 
-start = time.time()
-print(fib(n))
-end = time.time()
-
-start2 = time.time()
+    
+print(fib1(n))
+s = time.time()
 print(fib2(n))
-end2 = time.time()
+e = time.time()
+print(e-s)
 
-print(end - start)
-print(end2 - start2)
+s = time.time()
+print(fib3(n))
+e = time.time()
+print(e-s)
