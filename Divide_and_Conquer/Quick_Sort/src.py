@@ -15,7 +15,7 @@ def partition(low, high):
     # globals()['count'] += 1
     pivot = S[low]
     j = low
-    for i in range(low, high + 1):
+    for i in range(low + 1, high + 1):
         if S[i] < pivot:
             j += 1
             S[i], S[j] = S[j], S[i]
