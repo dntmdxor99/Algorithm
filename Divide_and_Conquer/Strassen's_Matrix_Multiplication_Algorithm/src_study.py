@@ -2,17 +2,20 @@ from os import sep
 import sys
 input = sys.stdin.readline
 
+
 count = 0
 
 
 def mmult(n, a, b, c):
+    # 단순 행렬 곱셈
     for i in range(n):
         for j in range(n):
             for k in range(n):
-                c[i][k] += a[i][j] * b[j][k]
+                c[i][k] += a[i][j] * b[j][k]        # += 해줘야함. 그냥 =를 하면 마지막으로 들어가는 값으로만 치환됨
 
 
 def partition(n, a, a11, a12, a21, a22):
+    # 행렬 분할
     for i in range(n):
         for j in range(n):
             a11[i][j] = a[i][j]
@@ -22,18 +25,21 @@ def partition(n, a, a11, a12, a21, a22):
 
 
 def madd(n, a, b, c):
+    # 단순 행렬 덧셈
     for i in range(n):
         for j in range(n):
             c[i][j] = a[i][j] + b[i][j]
 
 
 def msub(n, a, b, c):
+    # 단순 행렬 뺄셈
     for i in range(n):
         for j in range(n):
             c[i][j] = a[i][j] - b[i][j]
 
 
 def combine(n, c, c11, c12, c21, c22):
+    # 부분 행렬을 원본 행렬으로 복원
     for i in range(n):
         for j in range(n):
             c[i][j] = c11[i][j]
@@ -64,7 +70,11 @@ def strassen(n, a, b, c):
         m1, m2, m3, m4, m5, m6, m7 = [D[f'{c}'] for c in list(D.keys()) if 'm' in c]
         l, r = D['l'], D['r']
         D.clear()
+        # D 딕셔너리를 통해 쓰기 귀찮아서 다시 변수에 넣어주고, D를 초기화함
+        # 근데 이럴 바에는 그냥 a11 = list(); a12 = list() 하는게 더 편할지도 모름
 
+
+        # m1, m2, ... , m7 까지 구하는 과정
         madd(m, a11, a22, l)
         madd(m, b11, b22, r)
         strassen(m, l, r, m1)
@@ -90,7 +100,6 @@ def strassen(n, a, b, c):
         strassen(m, l, r, m7)
 
         # c의 부분 행렬을 계산
-
         madd(m, m1, m4, l)
         msub(m, l, m5, r)
         madd(m, r, m7, c11)
@@ -103,10 +112,12 @@ def strassen(n, a, b, c):
         msub(m, l, m2, r)
         madd(m, r, m6, c22)
 
+        # 부분 행렬을 합침
         combine(m, c, c11, c12, c21, c22)
     
     
 n, threshold = list(map(int, input().split()))
+
 
 if (k := n) and n & -n != n:
     # n이 2의 제곱 수가 아니면 2의 제곱수로 바꿈
@@ -119,7 +130,8 @@ a = [[0] * k for _ in range(k)]
 b = [[0] * k for _ in range(k)]
 c = [[0] * k for _ in range(k)]
 
-for i in range(n):
+
+for i in range(n):      # a와 b행렬에 입력 값을 넣어줌
     lst = list(map(int, input().split()))
     for j in range(n):
         a[i][j] = lst[j]
@@ -130,6 +142,7 @@ for i in range(n):
 
 
 strassen(k, a, b, c)
+
 
 print(count)
 for i in range(n):
