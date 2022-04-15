@@ -45,13 +45,9 @@ p = copy.deepcopy(m)        # p는 어떤 행렬을 기준으로 나눴는지 �
 func(n, d, m, p)
 
 for i in range(1, n + 1):
-    for j in range(i, n + 1):
-        print(m[i][j], end=' ')
-    print()
+    print(*m[i][i:n+1], sep=' ')
 for i in range(1, n + 1):
-    for j in range(i, n + 1):
-        print(p[i][j], end=' ')
-    print()
+    print(*p[i][i:n+1], sep=' ')
 
 print(m[1][n])
 
