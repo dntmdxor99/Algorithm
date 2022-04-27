@@ -1,0 +1,9 @@
+<div class="ivu-card-body" style="padding: 40px;">  <div class="panel-body"> <div data-v-6e5e6c6e="" id="problem-content" class="markdown-body"><p data-v-6e5e6c6e="" class="title">Description</p> <p data-v-6e5e6c6e="" class="content"><p>교재와 강의자료를 참고하여 Algorithm 4.4 Scheduling with Deadlines 의 구현을 완성하시오.</p><p><br></p><p>입력값은 profit의 내림차순으로 이미 정렬이 되어 있다고 가정해도 된다.</p><p>출력은 최대 이익과 함께 feasible sequence의 profit을 순서대로 출력한다.</p></p> <p data-v-6e5e6c6e="" class="title">Input <!----></p> <p data-v-6e5e6c6e="" class="content"><p>첫째 줄에 job의 개수 n이 주어진다.</p><p>둘째 줄에 n개의 deadline이 주어진다.</p><p>셋째 줄에 n개의 profit이 주어진다.</p><p>단, profit은 내림차순으로 정렬되어 있다.</p></p> <p data-v-6e5e6c6e="" class="title">Output <!----></p> <p data-v-6e5e6c6e="" class="content"><p>첫 줄에 최대 이익의 값을 출력한다.</p><p>둘째 줄에 Algorithm 4.4가 발견한 job sequence의 순서대로 각 job의 profit을 출력한다.</p></p>  <div data-v-6e5e6c6e=""><div data-v-6e5e6c6e="" class="flex-container sample"><div data-v-6e5e6c6e="" class="sample-input"><p data-v-6e5e6c6e="" class="title">Sample Input 1
+                <a data-v-6e5e6c6e="" class="copy"><i data-v-6e5e6c6e="" class="ivu-icon ivu-icon-clipboard"></i></a></p> <pre data-v-6e5e6c6e="">7
+3 1 1 3 1 3 2
+40 35 30 25 20 15 10</pre></div> <div data-v-6e5e6c6e="" class="sample-output"><p data-v-6e5e6c6e="" class="title">Sample Output 1</p> <pre data-v-6e5e6c6e="">100
+35 40 25</pre></div></div></div><div data-v-6e5e6c6e=""><div data-v-6e5e6c6e="" class="flex-container sample"><div data-v-6e5e6c6e="" class="sample-input"><p data-v-6e5e6c6e="" class="title">Sample Input 2
+                <a data-v-6e5e6c6e="" class="copy"><i data-v-6e5e6c6e="" class="ivu-icon ivu-icon-clipboard"></i></a></p> <pre data-v-6e5e6c6e="">5
+2 1 2 1 3
+97 27 25 19 13</pre></div> <div data-v-6e5e6c6e="" class="sample-output"><p data-v-6e5e6c6e="" class="title">Sample Output 2</p> <pre data-v-6e5e6c6e="">137
+27 97 13</pre></div></div></div> <!----> <!----></div></div></div>
