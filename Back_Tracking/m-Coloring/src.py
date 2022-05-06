@@ -32,11 +32,11 @@ if __name__ == "__main__":
 
     vcolor = [0] * (ver_num + 1)
 
-    for m in range(1, 5):
+    for m in range(1, ver_num + 1):
         flag = False
         cnt = 0
-        m_coloring(1, m)
+        m_coloring(0, m)
         if flag:
-            print(m + 1)
-            print(cnt * (m + 1))
+            print(m)
+            print(cnt)
             break
