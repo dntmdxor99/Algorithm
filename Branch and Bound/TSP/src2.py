@@ -1,7 +1,6 @@
 from copy import deepcopy
 import heapq
 
-
 INF = 9999      # 경로가 없거나, 무한대를 위한 것
 
 class Node:
@@ -59,19 +58,14 @@ class Node:
                     # 이미 어떤 노드에서 j로 향한 경로가 있다는 뜻임
                     continue
 
-                # min = adj[i][j] if min > adj[i][j] else min = min
+                min = adj[i][j] if min > adj[i][j] else min
+                # i -> j가 min보다 작다면 min을 업데이트
+                # 이때 i에서 출발해서 도착 가능한 모든 j에 대한 최솟값임
 
-                if min > adj[i][j]:
-                    # i -> j가 min보다 작다면 min을 업데이트
-                    # 이때 i에서 출발해서 도착 가능한 모든 j에 대한 최솟값임
-                    min = adj[i][j]
-            
             lower += min        # bound를 구하기 위해 더함
 
-            if lower >= INF:        # 이랬는데 INF를 넘긴다면 그냥 INF를 반환
-                return INF
-
-        return lower
+        return (INF if lower >= INF else lower)
+        # 이랬는데 INF를 넘긴다면 그냥 INF를 반환
         
 
 def create_adj():
