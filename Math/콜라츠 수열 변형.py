@@ -33,6 +33,6 @@ def func2(num):
 
 num = int(input())
 for i in range(1, num + 1):
-    func1(i)
-    # func2(i)
+    # func1(i)
+    func2(i)
 print(f'{num - cnt}')
