@@ -11,6 +11,7 @@ def bfs(que : deque, maps : list):
                 maps[nx] = cnt + 1
                 que.append((nx, cnt + 1))
                 
+                
         
 n, k = map(int, input().split())
 
